@@ -13,8 +13,9 @@ conectarDB(); //conectar a la base de datos al iniciar el servidor
 
 app.use(express.static(path.join(__dirname, "src", "assets"))); //ruta para mostrar archivos estáticos (CSS, JS, IMG)
 
-// Rutas de empleados
-//app.use("/empleados", empleadosRoutes);
+//Rutas 
+const empleadosRoutes = require("./src/Routes/EmpleadosRoutes"); 
+app.use("/api", empleadosRoutes); 
 
 
 app.get("/", (req, res) => { //ruta para mostrar el HTML que está en Views
