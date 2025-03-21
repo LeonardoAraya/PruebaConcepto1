@@ -1,29 +1,31 @@
-const express = require("express"); //Importar Framework de Express, facilitar la conexión con el servidor
-const cors = require("cors"); //permite que el backend se comunique sin interrupciones, permite peticiones desde cualquier sitio
-const path = require("path"); //permitir mostrar archivos estáticos y dinámicos
-const { conectarDB } = require("./src/config/db"); //importar el archivo de configuración
-//const empleadosRoutes = require("./src/Routes/EmpleadosRoutes");
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const { conectarDB } = require("./src/config/db");
 
-const app = express(); //variable que permite el servidor web
-app.use(express.json()); //permite que Express entienda y procese JSON
-app.use(cors()); //permite la peticiones desde cualquier sitio
+const app = express();
+app.use(express.json());
+app.use(cors());
 
+conectarDB();
 
-conectarDB(); //conectar a la base de datos al iniciar el servidor
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, "src", "assets"))); 
+app.use(express.static(path.join(__dirname, "src", "Views"))); 
 
-app.use(express.static(path.join(__dirname, "src", "assets"))); //ruta para mostrar archivos estáticos (CSS, JS, IMG)
+// Rutas de la API
+const empleadosRoutes = require("./src/Routes/EmpleadosRoutes");
+app.use("/api", empleadosRoutes);
 
-//Rutas 
-const empleadosRoutes = require("./src/Routes/EmpleadosRoutes"); 
-app.use("/api", empleadosRoutes); 
-
-
-app.get("/", (req, res) => { //ruta para mostrar el HTML que está en Views
-    res.sendFile(path.join(__dirname, "src", "Views", "index.html")); //enviar la dirección del index.html
+// Rutas para HTML
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "src", "Views", "index.html"));
 });
 
-const PORT = 3000; //puerto donde se ejecuta el servidor
-app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`)); //inicia servidor y lo deja escuchando en el puerto 3000
+app.get("/insertar", (req, res) => {
+    res.sendFile(path.join(__dirname, "src", "Views", "insertar.html"));
+});
 
-
-
+// Iniciar servidor
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));

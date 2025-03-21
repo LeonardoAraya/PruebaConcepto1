@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+/* CONFIGURACION PRINCIPAL DEL CUERPO DE LA PAGINA WEB */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #d4d4d4;
     margin: 0;
     padding: 0;
@@ -12,10 +15,12 @@ header {
     text-align: center;
 }
 
+/* TABLA */
+/* Configuraciones generales */
 .tabla-container {
     width: 80%;
     margin: 20px auto;
-    max-height: 490px; /* Altura máxima visible */
+    max-height: 530px; /* Altura máxima visible */
     overflow-y: auto; /* Habilitar desplazamiento vertical */
 }
 
@@ -30,20 +35,95 @@ th, td {
     border: 1px solid #d9d9d9;
 }
 
+/* Configuracion del encabezado */
 th {
-    background-color: #c1c3c4; /* Verde para los encabezados */
-    font-weight: bold;
+    background-color: #c1c3c4; /* Color del encabezados */
+    font-weight: bold; /* Para que sea negrita */
     text-transform: uppercase;
 }
 
+/* Configuracion de filas segun su paridad */
 tr:nth-child(odd) {
-    background-color: #3498db; /* Filas impares */
+    background-color: #3498db;
 }
 
 tr:nth-child(even) {
-    background-color: #2980b9; /* Filas pares */
+    background-color: #2980b9; 
 }
 
 main {
     padding: 20px;
+}
+
+/* BOTONES */
+button{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+/* BOTON INDEX.HTML */
+.btn-pantalla-registro {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #094aac; 
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-pantalla-registro:hover {
+    background-color: #085cdb;
+}
+
+.botones-insertar {
+    display: flex;
+    gap: 35px; 
+}
+
+/* BOTONES PAGINA INSERTAR.HTML */
+/* Personalización del botón "Guardar" */
+.btn-guardar {
+    background-color: #085cdb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    
+}
+
+.btn-guardar:hover {
+    background-color: #094aac;
+}
+
+/* Personalización del botón "Volver" */
+.btn-volver {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    margin-left: 75px;
+}
+
+.btn-volver:hover {
+    background-color: #b92332;  
+}
+
+/* FORM PAGINA INSERTAR */
+#saldo{
+    margin-left: 1.1%;
+}
+
+.form-group {
+    display: 200px;
+    flex-direction: column; /* Acomoda los elementos en columna */
+    margin-bottom: 30px; /* Ajusta la distancia entre los campos */
 }

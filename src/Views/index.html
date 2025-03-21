@@ -7,26 +7,29 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
+    <header>
+        <h1>Pagina Principal</h1>
+        <h5>Desarrollado por: Leonardo Araya y Josue Salazar</h5>
+    </header>
+    <main>
+        <script src="/js/index.js"></script>
+        <div class="tabla-container">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Saldo Actual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- Aqui se ejecuta el scrip que carga los datos de SQL a la tabla --> 
+                </tbody>
+            </table>
+        </div>
+        
+        <button id="btn-insertar" class="btn-pantalla-registro">Insertar Nuevo Registro</button>
+    </main>
     <script src="/js/index.js"></script>
-
 </body>
-<header>
-    <h1>Ejemplo de Tabla SQL</h1>
-</header>
-<main>
-    <div class="tabla-container">
-        <table class="tabla">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Saldo Actual</th>
-                </tr>
-            </thead>
-            <tbody>
-            <!-- Aqui se ejecuta el scrip que carga los datos de SQL a la tabla --> 
-            </tbody>
-        </table>
-    </div>
-</main>
 </html>
