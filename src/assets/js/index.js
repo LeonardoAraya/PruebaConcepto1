@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const tbody = document.querySelector(".tabla tbody");
 
     try {
-        const response = await fetch("http://localhost:3000/api/empleados"); 
-        const empleados = await response.json(); 
+        const response = await fetch("http://localhost:3000/api/empleados");
+        const empleados = await response.json();
 
         empleados.forEach(emp => {
             const row = document.createElement("tr");
@@ -21,17 +21,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // Funcionamiento de los botones para moverse entre paginas
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     let btnInsertar = document.getElementById("btn-insertar");
     if (btnInsertar) {
-        btnInsertar.addEventListener("click", function() {
+        btnInsertar.addEventListener("click", function () {
             window.location.href = "/insertar";
         });
     }
 
     let btnVolver = document.getElementById("btn-volver");
     if (btnVolver) {
-        btnVolver.addEventListener("click", function() {
+        btnVolver.addEventListener("click", function () {
             window.location.href = "/";
         });
     }
@@ -50,7 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Se verifica que todos los campos de la pantalla esten llenos
             if (!nombre || !saldo) {
-                alert("Todos los campos deben de estar llenos.");
+                Swal.fire({
+                    icon: "error",
+                    title: "¡Registro fallido!",
+                    text: "Todos los campos deben de estar llenos.",
+                    confirmButtonText: "Aceptar",
+                    })
                 return;
             }
 
@@ -58,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 nombre: nombre,
                 salario: parseFloat(saldo)
             };
-            
+
             // Se llama al servidor a traves de la API y se espera la respuesta
             try {
                 let response = await fetch("http://localhost:3000/api/empleados", {
@@ -72,14 +77,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 let result = await response.json();
 
                 if (response.ok) {
-                    alert("Empleado insertado correctamente.");
-                    window.location.href = "/"; // Redirigir a la página principal
+                    Swal.fire({
+                        icon: "success",
+                        title: "¡Registro guardado!",
+                        text: "El empleado ha sido guardado con éxito.",
+                        confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "/"; // Redirigir a la página principal
+                            }
+                        });
+                    
                 } else {
-                    alert(result.error || "Error al insertar el empleado.");
+                    Swal.fire({
+                        icon: "error",
+                        title: "¡Registro fallido!",
+                        text: result.error,
+                        confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "/"; // Redirigir a la página principal
+                            }
+                        });
                 }
             } catch (error) {
                 console.error("Error:", error);
-                alert("Hubo un problema con la solicitud.");//Mensaje del navegador
+                Swal.fire({
+                    icon: "error",
+                    title: "¡Registro fallido!",
+                    text: "Hubo un problema con la solicitud.",
+                    confirmButtonText: "Aceptar",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "/"; // Redirigir a la página principal
+                        }
+                    });
             }
         });
     }
