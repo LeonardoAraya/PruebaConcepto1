@@ -37,8 +37,8 @@ th, td {
 
 /* Configuracion del encabezado */
 th {
-    background-color: #c1c3c4; /* Color del encabezados */
-    font-weight: bold; /* Para que sea negrita */
+    background-color: #c1c3c4; 
+    font-weight: bold; 
     text-transform: uppercase;
 }
 
@@ -124,6 +124,6 @@ button{
 
 .form-group {
     display: 200px;
-    flex-direction: column; /* Acomoda los elementos en columna */
-    margin-bottom: 30px; /* Ajusta la distancia entre los campos */
+    flex-direction: column; 
+    margin-bottom: 30px; 
 }

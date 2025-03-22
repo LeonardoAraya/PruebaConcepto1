@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
 // Funcionamiento del boton guardar
 document.addEventListener("DOMContentLoaded", function () {
     let btnGuardar = document.querySelector(".btn-guardar");
@@ -51,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Se verifica que todos los campos de la pantalla esten llenos
             if (!nombre || !saldo) {
-                alert("Todos los campos son obligatorios.");
+                alert("Todos los campos deben de estar llenos.");
                 return;
             }
 
@@ -80,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             } catch (error) {
                 console.error("Error:", error);
-                alert("Hubo un problema con la solicitud.");
+                alert("Hubo un problema con la solicitud.");//Mensaje del navegador
             }
         });
     }

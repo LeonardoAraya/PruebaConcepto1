@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const sql = require("mssql"); // Importar mssql
-const { conectarDB } = require("../config/db"); // Importar la conexión a la BD
+const sql = require("mssql"); 
+const { conectarDB } = require("../config/db"); 
 
 router.get("/empleados", async (req, res) => {
     try {
